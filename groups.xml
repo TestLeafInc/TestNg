@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Suite">
+	<groups>
+		<run>
+			<include name=".*d.*"></include>
+		</run>
+	</groups>
+	<test name="Leads">
+		<classes>
+			<class name="leads.CreateLead" />
+			<class name="leads.DeleteLead" />
+			<class name="leads.EditLead" />
+			<class name="leads.MergeLead" />
+		</classes>		
+	</test> <!-- Test -->
+	<test name="Contacts">
+		<classes>
+			<class name="contacts.CreateContact" />
+			<class name="contacts.MergeContact" />
+			<class name="contacts.EditContact" />
+			<class name="contacts.DeleteContact" />
+			<class name="contacts.UploadContact" />
+		</classes>
+		
+	</test> <!-- Test -->
+</suite> <!-- Suite -->
