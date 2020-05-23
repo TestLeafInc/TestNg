@@ -14,7 +14,8 @@ public class RunXml {
 
 		TestNG testNG = new TestNG();
 		List<String> suites = new ArrayList<String>();
-		suites.add("leads.xml");
+		suites.add("testng1.xml");
+		suites.add("testng2.xml");
 		//suites.add("testng.xml");
 		testNG.setTestSuites(suites);
 		testNG.run();
