@@ -1,5 +1,6 @@
 package assignment;
 
+import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
@@ -7,17 +8,14 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
+import excel.ReadExcel;
+
 public class Register extends BaseTest {
 	
+	// [row][column]
 	@DataProvider(name="register")
-	public String[][] getRegisterData(){
-		String[][] data = new String[2][2];
-		data[0][0] = "babu.m3@testleaf.com";
-		data[0][1] = "leaf@12";		
-		
-		data[1][0] = "babu.m4@testleaf.com";
-		data[1][1] = "leaf@12";	
-		
+	public String[][] getRegisterData() throws IOException{
+		String[][] data = ReadExcel.readDataFromExcel();		
 		return data;
 	}
 	

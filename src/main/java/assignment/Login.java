@@ -1,14 +1,19 @@
 package assignment;
 
+import static org.testng.Assert.assertFalse;
+import static org.testng.Assert.assertTrue;
+
 import java.lang.reflect.Method;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
 
 public class Login extends BaseTest {
 	
@@ -26,16 +31,29 @@ public class Login extends BaseTest {
 	}
 	
 	@Test(groups="smoke",dataProvider="login")
-	public void login(String username, String password) {
+	public void login(String username, String password) {		
 		
+		boolean displayed = driver.findElement(By.id("email")).isDisplayed();
+		assertTrue(displayed);
 		
 		driver.findElement(By.id("email")).sendKeys(username);
 		driver.findElement(By.id("password")).sendKeys(password);
 		driver.findElement(By.id("buttonLogin")).click();
+		
+		/*boolean displayed1 = driver.findElement(By.id("email")).isDisplayed();
+		assertFalse(displayed1);*/
+		
 		String name = driver.findElement(By.tagName("strong")).getText();
-		if(name.contains(username)) {
-			System.out.println("Login successful");
-		}
+		Assert.assertEquals(name, username);
+		
+		SoftAssert soft =  new SoftAssert();
+		
+		
+		String title = driver.getTitle();
+		soft.assertEquals(title, "ACME Login");
+		
+		System.out.println("It continues");
+		
 		
 	}
 	

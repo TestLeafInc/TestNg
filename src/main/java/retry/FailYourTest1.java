@@ -4,7 +4,7 @@ import org.testng.annotations.Test;
 
 public class FailYourTest1 {
 	
-	@Test(timeOut=3500, retryAnalyzer=RetryTests.class)
+	@Test(timeOut=3500)
 	public void failTheTest() throws InterruptedException {
 		
 		// sleep can be between 2000 to 5000 ms

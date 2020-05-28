@@ -10,7 +10,7 @@ public class RetryTests implements IRetryAnalyzer {
 	
 	public boolean retry(ITestResult result) {
 		
-		if(!result.wasRetried() && maxRetry > retryCount) {
+		if(!result.isSuccess() && maxRetry > retryCount) {
 			retryCount++;
 			return true;
 		}
